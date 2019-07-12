@@ -1,4 +1,13 @@
 from numba import njit
+
+
+
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
+
+from scipy.ndimage.filters import maximum_filter
+from scipy.ndimage.morphology import generate_binary_structure, binary_erosion
+from scipy.ndimage.morphology import iterate_structure
 import numpy as np
 @njit()
 def _peaks(spec, rows, cols, amp_min):
