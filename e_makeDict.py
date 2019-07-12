@@ -24,6 +24,7 @@ def make_dict(pathName):
         A dictionary containing all of the nearest neighbor pairs.
     '''
     res = {}
+    res2 = {}
     pathList = Path(pathName).glob('*.mp3')
     cnt = 0
     for fileName in pathList:
@@ -31,10 +32,14 @@ def make_dict(pathName):
         digSamp = processSong(fileStr)
         peaks = Samples_to_Peaks(digSamp)
         res = peaks_to_fp(peaks, cnt, res)
+        res2[cnt] = fileName.stem
         cnt = cnt+1
 
     pickle_out = open("database.pickle", "wb")
     pickle.dump(res, pickle_out)
     pickle_out.close()
+    pickle_out2 = open("codeToSong.pickle", "wb")
+    pickle.dump(res, pickle_out2)
+    pickle_out2.close()
 
     return res
