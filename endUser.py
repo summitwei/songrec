@@ -1,7 +1,7 @@
 import pickle
 import V_ProcessMicrophone
 import C_1
-import e_peaksToDict
+from e_peaksToDict import peaks_to_fp
 from collections import Counter
 import numpy as np
 def matchRecordToSong(recordedFingerprints,database):
