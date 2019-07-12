@@ -6,6 +6,7 @@ from e_peaksToDict import peaks_to_fp
 from collections import Counter
 import numpy as np
 import librosa
+import sys
 from pathlib import Path
 def matchRecordToSong(recordedFingerprints,database):
     '''Take fingerprints from recorded sample and find matches in songs
@@ -30,9 +31,19 @@ def matchRecordToSong(recordedFingerprints,database):
     print("Ordered Matches"+str(orderedMatches))
     orderedValues=sorted(list(dicton.values()),reverse=True)#Values sorted
     print("Ordered Values" +str(orderedValues))
-    if orderedValues[0]>15:#If there are enough matches
+    if orderedValues[0]>65:#If there are enough matches
+        arr=[]
+        counts={}
+        dicton={}
+        orderedValues=[]
+
         return orderedMatches[0]#return the song
     else:
+        arr=[]
+        counts={}
+        dicton={}
+        orderedValues=[]
+        
         return "No song found"#If not enough matches, return no song found
 def main():
     '''
@@ -67,19 +78,20 @@ def main():
                 answer = "None"
         sampling_rate=44100
         bit_depth=16
-        local_song_path=str(Path(r"/Users/varundeb/Documents/BWSI/Some Songs/Hotel California.mp3"))
-        print("1")
-        samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
-        print("2")
-        print("Samples"+str(samples))
-        rtn=samples*[2**bit_depth-1]
-        print("3")
-        print("rtn"+str(rtn))
-        rtn2=rtn[44100:88200]
-        print("rtn2"+str(rtn2))
-        print("4")
-
-        peaks = Samples_to_Peaks(rtn2)
+        # local_song_path=str(Path(r"/Users/varundeb/Documents/BWSI/Some Songs/Hotel California.mp3"))
+        # print("1")
+        # samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
+        # print("2")
+        # print("Samples"+str(samples))
+        # rtn=samples*(2**bit_depth-1)
+        # print("3")
+        # print("rtn"+str(rtn))
+        # rtn2=rtn[441000:882000]
+        # print("rtn2"+str(rtn2))
+        # print("4")
+        digSamples = V_ProcessMicrophone.processAudio(10)
+        peaks = Samples_to_Peaks(digSamples)
+        # peaks = Samples_to_Peaks(rtn2)
         print("5")
         print("peaks"+str(peaks))
         fingerprints=peaks_to_fp(peaks)
@@ -89,6 +101,7 @@ def main():
         else:
             with open(pickleName2, "rb") as file:
                 randomLoadedSongDict = pickle.load(file)
+            print("Song to Code:" + str(randomLoadedSongDict))
             matchedSongInfo=randomLoadedSongDict[matchedSongInfo]
             print(matchedSongInfo)
 

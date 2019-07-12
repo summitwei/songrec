@@ -39,7 +39,7 @@ def make_dict(pathName):
     pickle.dump(res, pickle_out)
     pickle_out.close()
     pickle_out2 = open("codeToSong.pickle", "wb")
-    pickle.dump(res, pickle_out2)
+    pickle.dump(res2, pickle_out2)
     pickle_out2.close()
 
-    return res2
+    return res, res2
