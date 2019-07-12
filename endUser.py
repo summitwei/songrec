@@ -36,14 +36,14 @@ def matchRecordToSong(recordedFingerprints,database):
         counts={}
         dicton={}
         orderedValues=[]
-        orderedMatches=[]
+
         return orderedMatches[0]#return the song
     else:
         arr=[]
         counts={}
         dicton={}
         orderedValues=[]
-        orderedMatches=[]
+        
         return "No song found"#If not enough matches, return no song found
 def main():
     '''
