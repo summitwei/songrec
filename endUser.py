@@ -67,12 +67,12 @@ def main():
         peaks=C_1.Samples_to_Peaks(digSamples)
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
-        if isinstance(matchedSongInfo,str):
+        if matchedSongInfo=="No song found":
             print(matchedSongInfo)
         else:
             with open(pickleName2, "rb") as file:
                 randomLoadedSongDict = pickle.load(file)
-            matchedSongInfo=randomLoadedSongDict[matchedSongInfo[0]]
+            matchedSongInfo=randomLoadedSongDict[matchedSongInfo]
             print(matchedSongInfo)
 
 if __name__ == '__main__':
