@@ -43,7 +43,7 @@ def matchRecordToSong(recordedFingerprints,database):
         counts={}
         dicton={}
         orderedValues=[]
-        
+
         return "No song found"#If not enough matches, return no song found
 def main():
     '''
@@ -96,6 +96,9 @@ def main():
         print("peaks"+str(peaks))
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
+        digSamples=[]
+        peaks=[]
+        fingerprints=[]
         if matchedSongInfo=="No song found":
             print(matchedSongInfo)
         else:
@@ -104,6 +107,7 @@ def main():
             print("Song to Code:" + str(randomLoadedSongDict))
             matchedSongInfo=randomLoadedSongDict[matchedSongInfo]
             print(matchedSongInfo)
+        matchedSongInfo=""
 
 if __name__ == '__main__':
     main()
