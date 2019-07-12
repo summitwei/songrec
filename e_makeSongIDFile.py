@@ -21,8 +21,8 @@ def make_song_id_file(pathName):
     pathList = Path(pathName).glob('*')
     cnt = 0
     for fileName in pathList:
-        fileStr = str(fileName)
-        res[cnt] = fileStr
+        # fileStr = str(fileName)
+        res[cnt] = fileName.stem
         cnt = cnt+1
 
     pickle_out = open("codeToSong.pickle", "wb")
