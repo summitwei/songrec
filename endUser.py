@@ -59,7 +59,7 @@ def main():
             if answer == "yes":
                 userWantsContinue = True
             elif answer == "no":
-                userWantsContinue = False
+                sys.exit(0)
             else:
                 answer = "None"
 
