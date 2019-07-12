@@ -14,12 +14,14 @@ def matchRecordToSong(recordedFingerprints,database):
     -----------------------------------
     Returns:
         Most popular song found or "No song found" '''
-    arr=(recordedFingerprints)#Convert to Numpy array
-    print(arr)
+    arr=[]
+    for a in recordedFingerprints:
+        if a[0] in database:
+            arr.append(a[1])
     counts=Counter(arr[arr in database])#Make a counter of the number of matches
     print(counts)#Print debugging
     dict={key:value for (key,value) in counts}#Collections counter --> Dictionary
-    orderedMatches=sorted(A, key=A.get)#Get sorted list of ordered matches
+    orderedMatches=sorted(dict, key=dict.get)#Get sorted list of ordered matches
     orderedValues=sorted(list(dict.values()))#Values sorted
     if orderedValues[0]>15:#If there are enough matches
         return orderedMatches[0]#return the song
