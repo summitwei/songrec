@@ -26,8 +26,8 @@ def Samples_to_Peaks(samples):
                                           window=mlab.window_hanning,
                                           noverlap=int(4096 / 2))  # samples to Spectrogram
 
-    np.clip(Spectrogram, a_min=1E-20, a_max=None, out=Spectrogram)
-    peaks = f.local_peaks(np.log(Spectrogram), .77, 20)
+    Spectrogram = np.log(Spectrogram.flatten()).clip().sort()
+    peaks = f.local_peaks(Spectrogram[.77 * len(Spectrogram):], .77, 15)
 
 
     return (peaks)
