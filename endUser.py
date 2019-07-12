@@ -66,7 +66,16 @@ def main():
 
     while (userWantsContinue): #While the user wants to go again
 
-        userWantsContinue=False
+        answer = "None"
+        while answer.lower() not in ["yes", "no"]:
+            answer = input("Type yes if you want to enter another recording or no if you're done")
+            answer = answer.lower()
+            if answer == "yes":
+                userWantsContinue = False
+            elif answer == "no":
+                sys.exit(0)
+            else:
+                answer = "None"
         sampling_rate=44100
         bit_depth=16
         # local_song_path=str(Path(r"/Users/varundeb/Documents/BWSI/Some Songs/Hotel California.mp3"))
