@@ -44,7 +44,7 @@ def main():
     while (userWantsContinue):
         digSamples=v_processMicrophone.processAudio(10)
         peaks=c_1.Samples_to_Peaks(digSamples)
-        fingerprints=peaks_to_Dict(peaks)
+        fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints)
         if isinstance(matchedSongInfo,str):
             print(matchedSongInfo)
