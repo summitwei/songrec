@@ -76,10 +76,12 @@ def main():
         print("3")
         print("rtn"+str(rtn))
         rtn2=rtn[44100:88200]
+        print("rtn2"+str(rtn2))
         print("4")
 
         peaks = Samples_to_Peaks(rtn2)
         print("5")
+        print("peaks"+str(peaks))
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
         if matchedSongInfo=="No song found":
