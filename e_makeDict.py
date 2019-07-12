@@ -24,7 +24,7 @@ def make_dict(pathName):
         A dictionary containing all of the nearest neighbor pairs.
     '''
     res = {}
-    pathList = Path(pathName).glob('*')
+    pathList = Path(pathName).glob('*.mp3')
     cnt = 0
     for fileName in pathList:
         fileStr = str(fileName)
