@@ -20,5 +20,6 @@ def Samples_to_Peaks(samples):
         Spectrogram, freqs, t = mlab.specgram(np.abs(np.fft.rfft(samples[x])), Time )#samples to Spectrogram
         peaks =f.local_peaks(np.log(Spectrogram), .77, 20)
         l.append(peaks)
+    return(l)
         #print(Spectrogram)
 Samples_to_Peaks([[0,1,2,3,4,5,6],[0,1,2,3,4,5,6],[0,1,2,3,4,5,6]])
