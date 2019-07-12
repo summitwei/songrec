@@ -28,3 +28,5 @@ def make_song_id_file(pathName):
     pickle_out = open("codeToSong.pickle", "wb")
     pickle.dump(res, pickle_out)
     pickle_out.close()
+    
+    return res
