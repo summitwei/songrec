@@ -2,7 +2,7 @@ import pickle
 import V_ProcessMicrophone
 import C_1
 import e_peaksToDict
-from collections import counter
+from collections import Counter
 import numpy as np
 def matchRecordToSong(recordedFingerprints,database):
     '''Take fingerprints from recorded sample and find matches in songs
