@@ -68,7 +68,7 @@ def main():
 
         answer = "None"
         while answer.lower() not in ["yes", "no"]:
-            answer = input("Type yes if you want to enter another recording or no if you're done")
+            answer = input("Type yes to look for a song or no to quit")
             answer = answer.lower()
             if answer == "yes":
                 userWantsContinue = False
