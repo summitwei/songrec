@@ -1,6 +1,6 @@
 import numpy as np
 
-def peaks_to_fp(peaks, songID):
+def peaks_to_fp(peaks, songID, origDict = {}):
     '''
     Takes spectrogram peaks and creates dictionary of nearest neighbors.
 
@@ -10,18 +10,21 @@ def peaks_to_fp(peaks, songID):
     peaks: List[Tuple[int, int]]
         Time and frequency index-values of local peaks in spectrogram,
         originally sorted by frequency and then time
-    id: int
+    songID: int
         The ID of the current song.
+    origDict: Dictionary{Tuple[int, int, int], List[Tuple[int, int]]}
+        An original dictionary; if it exists, the function adds to it
+        and returns the result combined with previous results.
 
     Returns:
     --------
-    Dictionary{Tuple[int, int, int], List[Tuple[int, float]]}
+    Dictionary{Tuple[int, int, int], List[Tuple[int, int]]}
         A dictionary mapping values of (f_a, f_b, dt) to all matching song ID's and times.
     '''
 
     neighborCount = 5
 
-    result = {}
+    result = origDict
 
     N = len(peaks)
     for i in range(N):
