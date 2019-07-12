@@ -90,6 +90,7 @@ def main():
         else:
             with open(pickleName2, "rb") as file:
                 randomLoadedSongDict = pickle.load(file)
+            print("Song to Code:" + str(randomLoadedSongDict))
             matchedSongInfo=randomLoadedSongDict[matchedSongInfo]
             print(matchedSongInfo)
 
