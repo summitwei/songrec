@@ -15,6 +15,7 @@ def matchRecordToSong(recordedFingerprints,database):
     Returns:
         Most popular song found or "No song found" '''
     arr=np.array(recordedFingerprints)#Convert to Numpy array
+    print(arr)
     counts=Counter(arr[arr in database])#Make a counter of the number of matches
     print(counts)#Print debugging
     dict={key:value for (key,value) in counts}#Collections counter --> Dictionary
