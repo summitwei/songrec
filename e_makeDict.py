@@ -9,7 +9,9 @@ def make_dict(pathName):
     '''
     Creates a dictionary of nearest neighbor values.
 
-    This function takes 
+    This function takes in a path to a folder and
+    creates a pickle file containing a dictionary
+    of neighbors. It also returns the dictionary.
 
     Parameters:
     -----------
@@ -19,9 +21,10 @@ def make_dict(pathName):
     Returns:
     --------
     Dictionary{Tuple[int, int, int], List[Tuple[int, int]]}
+        A dictionary containing all of the nearest neighbor pairs.
     '''
     res = {}
-    pathList = Path(pathName).glob('**/*.asm')
+    pathList = Path(pathName).glob('*')
     cnt = 0
     for fileName in pathList:
         fileStr = str(fileName)
