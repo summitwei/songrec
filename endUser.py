@@ -1,6 +1,6 @@
 import pickle
-import v_processMicrophone
-import c_1
+import V_ProcessMicrophone
+import C_1
 import e_peaksToDict
 from collections import counter
 import numpy as np
@@ -14,16 +14,16 @@ def matchRecordToSong(recordedFingerprints,database):
     -----------------------------------
     Returns:
         Most popular song found or "No song found" '''
-    arr=np.array(recordedFingerprints)
-    counts=Counter(arr[arr in database])
-    print(counts)
-    dict={key:value for (key,value) in counts}
-    orderedMatches=sorted(A, key=A.get)
-    orderedValues=list(dict.matches())
-    if orderedValues[0]>15:
-        return orderedMatches[0]
+    arr=np.array(recordedFingerprints)#Convert to Numpy array
+    counts=Counter(arr[arr in database])#Make a counter of the number of matches
+    print(counts)#Print debugging
+    dict={key:value for (key,value) in counts}#Collections counter --> Dictionary
+    orderedMatches=sorted(A, key=A.get)#Get sorted list of ordered matches
+    orderedValues=sorted(list(dict.values()))#Values sorted
+    if orderedValues[0]>15:#If there are enough matches
+        return orderedMatches[0]#return the song
     else:
-        return "No song found"
+        return "No song found"#If not enough matches, return no song found
 def main():
     '''
     Allows user to record audio and matches audio to a song in the database
@@ -32,22 +32,23 @@ def main():
     ----------------------------------------------------------------------
     Returns: String with song name or Song not found!!
     '''
-    pickleName="database.pickle"
-    pickleName2="codeToSong.pickle"
-    print('Loading Song Database')
-    with open(pickleName,"rb") as file:
-        database=pickle.load(file)
-    print("Database Loaded")
-    userWantsContinue=True
+    pickleName="database.pickle"#Name of big pickle
+    pickleName2="codeToSong.pickle"#Name of code to song dict pickle
+    print('Loading Song Database')#Inform user
+    with open(pickleName,"rb") as file:#load pickle
+        database=pickle.load(file)#load pickle
+    print("Database Loaded")#inform user
+    userWantsContinue=True#Variable for continuing to upload
 
 
 
 
-    while (userWantsContinue):
+    while (userWantsContinue): #While the user wants to go again
+
         digSamples=v_processMicrophone.processAudio(10)
         peaks=c_1.Samples_to_Peaks(digSamples)
         fingerprints=peaks_to_fp(peaks)
-        matchedSongInfo=matchRecordToSong(fingerprints)
+        matchedSongInfo=matchRecordToSong(fingerprints,database)
         if isinstance(matchedSongInfo,str):
             print(matchedSongInfo)
         else:
