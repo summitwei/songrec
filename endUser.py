@@ -17,7 +17,7 @@ def matchRecordToSong(recordedFingerprints,database):
     arr=[]
     for a in recordedFingerprints:
         if a in database:
-            for b in recordedFingerprints[a]:
+            for b in database[a]:
                 arr.append(b[0])
     print(arr)
     counts=Counter(arr)#Make a counter of the number of matches
