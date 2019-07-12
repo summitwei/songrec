@@ -6,6 +6,7 @@ from e_peaksToDict import peaks_to_fp
 from collections import Counter
 import numpy as np
 import librosa
+import sys
 from pathlib import Path
 def matchRecordToSong(recordedFingerprints,database):
     '''Take fingerprints from recorded sample and find matches in songs
@@ -75,7 +76,7 @@ def main():
         rtn=samples*[2**bit_depth-1]
         print("3")
         print("rtn"+str(rtn))
-        rtn2=rtn[44100:88200]
+        rtn2=rtn[441000:882000]
         print("rtn2"+str(rtn2))
         print("4")
 
