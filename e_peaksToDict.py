@@ -1,6 +1,6 @@
 import numpy as np
 
-def peaks_to_fp(peaks, songID, origDict = {}):
+def peaks_to_fp(peaks, songID=-1, origDict = {}):
     '''
     Takes spectrogram peaks and creates dictionary of nearest neighbors.
 
