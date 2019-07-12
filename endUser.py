@@ -25,7 +25,10 @@ def matchRecordToSong(recordedFingerprints):
     dict={key:value for (key,value) in counts}
     orderedMatches=sorted(A, key=A.get)
     orderedValues=list(dict.matches())
-    return orderedMatches[0]
+    if orderedValues[0]>15:
+        return orderedMatches[0]
+    else:
+        return "No song found"
 
 
 
