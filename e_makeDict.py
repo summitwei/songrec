@@ -42,4 +42,4 @@ def make_dict(pathName):
     pickle.dump(res, pickle_out2)
     pickle_out2.close()
 
-    return res2
+    return res, res2
