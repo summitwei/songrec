@@ -23,8 +23,10 @@ def matchRecordToSong(recordedFingerprints,database):
     counts=Counter(arr)#Make a counter of the number of matches
     print(counts)#Print debugging
     dicton={key:value for (key,value) in counts.items()}#Collections counter --> Dictionary
-    orderedMatches=sorted(dicton, key=dicton.get)#Get sorted list of ordered matches
-    orderedValues=sorted(list(dicton.values()))#Values sorted
+    orderedMatches=sorted(dicton, key=dicton.get,reverse=True)#Get sorted list of ordered matches
+    print(orderedMatches)
+    orderedValues=sorted(list(dicton.values()),reverse=True)#Values sorted
+    print(orderedValues)
     if orderedValues[0]>15:#If there are enough matches
         return orderedMatches[0]#return the song
     else:
