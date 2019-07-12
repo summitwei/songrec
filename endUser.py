@@ -68,12 +68,16 @@ def main():
         sampling_rate=44100
         bit_depth=16
         local_song_path=str(Path(r"/Users/varundeb/Documents/BWSI/Some Songs/Hotel California.mp3"))
+        print("1")
         samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
+        print("2")
         rtn=samples*[2**bit_depth-1]
+        print("3")
         rtn2=rtn[44100:88200]
-
+        print("4")
 
         peaks = Samples_to_Peaks(rtn2)
+        print("5")
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
         if matchedSongInfo=="No song found":
