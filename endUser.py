@@ -73,7 +73,7 @@ def main():
         samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
         print("2")
         print("Samples"+str(samples))
-        rtn=samples*[2**bit_depth-1]
+        rtn=samples*(2**bit_depth-1)
         print("3")
         print("rtn"+str(rtn))
         rtn2=rtn[441000:882000]
