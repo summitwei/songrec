@@ -23,8 +23,6 @@ def peaks_to_fp(peaks, songID=-1, origDict = {}):
     '''
 
     neighborCount = 5
-    if(songID == -1):
-        neighborCount = 15
 
     result = origDict
 
