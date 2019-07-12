@@ -31,6 +31,7 @@ def make_dict(pathName):
         digSamp = processSong(fileStr)
         peaks = Samples_to_Peaks(digSamp)
         res = peaks_to_fp(peaks, cnt, res)
+        cnt = cnt+1
 
     pickle_out = open("database.pickle", "wb")
     pickle.dump(res, pickle_out)
