@@ -67,14 +67,14 @@ def main():
                 answer = "None"
         sampling_rate=44100
         bit_depth=16
-        local_song_path=str(Path(r"/Users/varundeb/Documents/BWSI/Some Songs/Hotel California.mp3"))
-        samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
-        rtn=samples*[2**bit_depth-1]
-        rtn2=rtn[44100:88200]
+        # local_song_path=str(Path(r"/Users/varundeb/Documents/BWSI/Some Songs/Hotel California.mp3"))
+        # samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
+        # rtn=samples*[2**bit_depth-1]
+        # rtn2=rtn[44100:88200]
         # digSamples=V_ProcessMicrophone.processAudio(10)
-        # digSamples=V_ProcessAudioFile()
-        # peaks=C_1.Samples_to_Peaks(digSamples)
-        peaks = C_1.Samples_to_Peaks(rtn2)
+        digSamples=V_ProcessAudioFile(r"/Users/varundeb/Documents/BWSI/Some Songs/10_sec_clipped_Hotel California.mp3")
+        peaks=C_1.Samples_to_Peaks(digSamples)
+        # peaks = C_1.Samples_to_Peaks(rtn2)
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
         if matchedSongInfo=="No song found":
