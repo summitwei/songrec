@@ -72,7 +72,7 @@ def main():
         # rtn=samples*[2**bit_depth-1]
         # rtn2=rtn[44100:88200]
         # digSamples=V_ProcessMicrophone.processAudio(10)
-        digSamples=V_ProcessAudioFile(r"/Users/varundeb/Documents/BWSI/Some Songs/10_sec_clipped_Hotel California.mp3")
+        digSamples=V_ProcessAudioFile.processSong("/Users/varundeb/Documents/BWSI/Some Songs/10_sec_clipped_Hotel California.mp3")
         peaks=C_1.Samples_to_Peaks(digSamples)
         # peaks = C_1.Samples_to_Peaks(rtn2)
         fingerprints=peaks_to_fp(peaks)
