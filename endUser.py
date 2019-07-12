@@ -45,8 +45,8 @@ def main():
 
     while (userWantsContinue): #While the user wants to go again
 
-        digSamples=v_processMicrophone.processAudio(10)
-        peaks=c_1.Samples_to_Peaks(digSamples)
+        digSamples=V_ProcessMicrophone.processAudio(10)
+        peaks=C_1.Samples_to_Peaks(digSamples)
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
         if isinstance(matchedSongInfo,str):
