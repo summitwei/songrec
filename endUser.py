@@ -71,13 +71,17 @@ def main():
         print("1")
         samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
         print("2")
+        print("Samples"+str(samples))
         rtn=samples*[2**bit_depth-1]
         print("3")
+        print("rtn"+str(rtn))
         rtn2=rtn[44100:88200]
+        print("rtn2"+str(rtn2))
         print("4")
 
         peaks = Samples_to_Peaks(rtn2)
         print("5")
+        print("peaks"+str(peaks))
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
         if matchedSongInfo=="No song found":
