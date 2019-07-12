@@ -18,7 +18,7 @@ def matchRecordToSong(recordedFingerprints,database):
     for a in recordedFingerprints:
         if a[0] in database:
             arr.append(a[1])
-    counts=Counter(arr[arr in database])#Make a counter of the number of matches
+    counts=Counter(arr)#Make a counter of the number of matches
     print(counts)#Print debugging
     dict={key:value for (key,value) in counts}#Collections counter --> Dictionary
     orderedMatches=sorted(dict, key=dict.get)#Get sorted list of ordered matches
