@@ -25,12 +25,10 @@ def Samples_to_Peaks(samples):
     Spectrogram, freqs, t = mlab.specgram(s, NFFT=4096, Fs=sampling_rate,
                                           window=mlab.window_hanning,
                                           noverlap=int(4096 / 2))  # samples to Spectrogram
-<<<<<<< HEAD
+
     np.clip(Spectrogram, a_min=1E-20, a_max=None, out=Spectrogram)
     peaks = f.local_peaks(np.log(Spectrogram), .77, 20)
-=======
-    peaks = f.local_peaks(np.log(Spectrogram), .77, 15) #Messed with the original parameters, .77 and 15
->>>>>>> ed36d011d8b673a132a9ca3b7f8d6359997bb6fb
+
 
     return (peaks)
     # print(Spectrogram)
