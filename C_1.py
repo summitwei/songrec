@@ -22,12 +22,13 @@ def Samples_to_Peaks(samples):
     frequency = np.arange(len(samples) // 2 + 1 / NumofSamp(samples))
     # print (frequency)
     s = np.abs(np.fft.rfft(samples))
-    Spectrogram, freqs, t = mlab.specgram(s, NFFT=4096, Fs=sampling_rate,
+    Spectrogram, freqs, t = mlab.specgram(samples, NFFT=4096, Fs=sampling_rate,
                                           window=mlab.window_hanning,
                                           noverlap=int(4096 / 2))  # samples to Spectrogram
 
-    Spectrogram = np.log(Spectrogram.flatten()).clip().sort()
-    peaks = f.local_peaks(Spectrogram[.77 * len(Spectrogram):], .77, 15)
+    np.clip(Spectrogram, a_min=1E-20, a_max=None, out=Spectrogram)
+
+    peaks = f.local_peaks(np.log(Spectrogram.ravel()[int (.77*len(samples)):]), .77, 20)
 
 
     return (peaks)
