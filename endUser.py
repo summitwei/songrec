@@ -38,7 +38,13 @@ while (userWantsContinue):
     peaks=c_1.Samples_to_Peaks(digSamples)
     fingerprints=peaks_to_Dict(peaks)
     matchedSongInfo=matchRecordToSong(fingerprints)
-    print(matchedSongInfo)
+    if isinstance(matchedSongInfo,str):
+        print(matchedSongInfo)
+    else:
+        #Load in dict from pickle
+        ##load in dict from pickle
+        matchedSongInfo=randomLoadedSongDict[matchedSongInfo[0]]
+        print(matchedSongInfo)
     answer="None"
     while answer.lower() not in ["Yes","No"]:
         answer=input("Type yes if you want to enter another recording or no if you're done")
