@@ -1,9 +1,11 @@
 import pickle
 import V_ProcessMicrophone
+import V_ProcessAudioFile
 import C_1
 from e_peaksToDict import peaks_to_fp
 from collections import Counter
 import numpy as np
+import librosa
 def matchRecordToSong(recordedFingerprints,database):
     '''Take fingerprints from recorded sample and find matches in songs
 
@@ -62,9 +64,16 @@ def main():
                 sys.exit(0)
             else:
                 answer = "None"
-
-        digSamples=V_ProcessMicrophone.processAudio(10)
-        peaks=C_1.Samples_to_Peaks(digSamples)
+        sampling_rate=44100
+        bit_depth=16
+        local_song_path=str(PATH(r"/Users/varundeb/Documents/BWSI/Some Songs/Hotel California.mp3"))
+        samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
+        rtn=samples*[2**bit_depth-1]
+        rtn2=rtn[44100:88200]
+        # digSamples=V_ProcessMicrophone.processAudio(10)
+        # digSamples=V_ProcessAudioFile()
+        # peaks=C_1.Samples_to_Peaks(digSamples)
+        peaks = C_1.Samples_to_Peaks(rtn2)
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
         if matchedSongInfo=="No song found":
