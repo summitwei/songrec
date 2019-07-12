@@ -4,12 +4,6 @@ import c_1
 import e_peaksToDict
 from collections import counter
 import numpy as np
-pickleName="database.pickle"
-print('Loading Song Database')
-with open(pickleName,"rb") as file:
-    database=pickle.load(file)
-print("Database Loaded")
-userWantsContinue=True
 def matchRecordToSong(recordedFingerprints):
     '''Take fingerprints from recorded sample and find matches in songs
 
@@ -29,30 +23,45 @@ def matchRecordToSong(recordedFingerprints):
         return orderedMatches[0]
     else:
         return "No song found"
+def main():
+    '''
+    Allows user to record audio and matches audio to a song in the database
+    ----------------------------------------------------------------------
+    Parameters: None
+    ----------------------------------------------------------------------
+    Returns: String with song name or Song not found!!
+    '''
+    pickleName="database.pickle"
+    print('Loading Song Database')
+    with open(pickleName,"rb") as file:
+        database=pickle.load(file)
+    print("Database Loaded")
+    userWantsContinue=True
 
 
 
 
-while (userWantsContinue):
-    digSamples=v_processMicrophone.processAudio(10)
-    peaks=c_1.Samples_to_Peaks(digSamples)
-    fingerprints=peaks_to_Dict(peaks)
-    matchedSongInfo=matchRecordToSong(fingerprints)
-    if isinstance(matchedSongInfo,str):
-        print(matchedSongInfo)
-    else:
-        #Load in dict from pickle
-        ##load in dict from pickle
-        matchedSongInfo=randomLoadedSongDict[matchedSongInfo[0]]
-        print(matchedSongInfo)
-    answer="None"
-    while answer.lower() not in ["Yes","No"]:
-        answer=input("Type yes if you want to enter another recording or no if you're done")
-        answer=answer.lower()
-        if answer =="yes":
-            userWantsContinue=True
-        elif answer=="no":
-            userWantsContinue=False
+    while (userWantsContinue):
+        digSamples=v_processMicrophone.processAudio(10)
+        peaks=c_1.Samples_to_Peaks(digSamples)
+        fingerprints=peaks_to_Dict(peaks)
+        matchedSongInfo=matchRecordToSong(fingerprints)
+        if isinstance(matchedSongInfo,str):
+            print(matchedSongInfo)
         else:
-            answer="None"
-
+            #Load in dict from pickle
+            ##load in dict from pickle
+            matchedSongInfo=randomLoadedSongDict[matchedSongInfo[0]]
+            print(matchedSongInfo)
+        answer="None"
+        while answer.lower() not in ["yes","no"]:
+            answer=input("Type yes if you want to enter another recording or no if you're done")
+            answer=answer.lower()
+            if answer =="yes":
+                userWantsContinue=True
+            elif answer=="no":
+                userWantsContinue=False
+            else:
+                answer="None"
+if __name__ == '__main__':
+    main()
