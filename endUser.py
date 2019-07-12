@@ -4,12 +4,13 @@ import c_1
 import e_peaksToDict
 from collections import counter
 import numpy as np
-def matchRecordToSong(recordedFingerprints):
+def matchRecordToSong(recordedFingerprints,database):
     '''Take fingerprints from recorded sample and find matches in songs
 
     Paramaters:
     -----------------------------------
     recordedFingerprints: Any iterable with the recorded fingerprints from the 10 sec sample
+    database: Dictionary of frequency patterns to song codes
     -----------------------------------
     Returns:
         Most popular song found or "No song found" '''
@@ -32,6 +33,7 @@ def main():
     Returns: String with song name or Song not found!!
     '''
     pickleName="database.pickle"
+    pickleName2="codeToSong.pickle"
     print('Loading Song Database')
     with open(pickleName,"rb") as file:
         database=pickle.load(file)
@@ -49,8 +51,8 @@ def main():
         if isinstance(matchedSongInfo,str):
             print(matchedSongInfo)
         else:
-            #Load in dict from pickle
-            ##load in dict from pickle
+            with open(pickleName2, "rb") as file:
+                randomLoadedSongDict = pickle.load(file)
             matchedSongInfo=randomLoadedSongDict[matchedSongInfo[0]]
             print(matchedSongInfo)
         answer="None"
