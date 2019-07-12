@@ -71,7 +71,8 @@ def main():
         samples,fs=librosa.load(local_song_path,sr=sampling_rate, mono=True)
         rtn=samples*[2**bit_depth-1]
         rtn2=rtn[44100:88200]
-
+        print(rtn2)
+        print(help(C_1))
         peaks = C_1.Samples_to_Peaks(rtn2)
         fingerprints=peaks_to_fp(peaks)
         matchedSongInfo=matchRecordToSong(fingerprints,database)
