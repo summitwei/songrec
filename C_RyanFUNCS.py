@@ -1,5 +1,5 @@
 from numba import njit
-
+import numpy as np
 @njit()
 def _peaks(spec, rows, cols, amp_min):
     peaks = []
