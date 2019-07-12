@@ -32,8 +32,18 @@ def matchRecordToSong(recordedFingerprints,database):
     orderedValues=sorted(list(dicton.values()),reverse=True)#Values sorted
     print("Ordered Values" +str(orderedValues))
     if orderedValues[0]>70:#If there are enough matches
+        arr=[]
+        counts={}
+        dicton={}
+        orderedValues=[]
+        orderedMatches=[]
         return orderedMatches[0]#return the song
     else:
+        arr=[]
+        counts={}
+        dicton={}
+        orderedValues=[]
+        orderedMatches=[]
         return "No song found"#If not enough matches, return no song found
 def main():
     '''
