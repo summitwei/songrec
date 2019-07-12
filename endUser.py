@@ -45,6 +45,17 @@ def main():
 
     while (userWantsContinue): #While the user wants to go again
 
+        answer = "None"
+        while answer.lower() not in ["yes", "no"]:
+            answer = input("Type yes if you want to enter another recording or no if you're done")
+            answer = answer.lower()
+            if answer == "yes":
+                userWantsContinue = True
+            elif answer == "no":
+                userWantsContinue = False
+            else:
+                answer = "None"
+
         digSamples=V_ProcessMicrophone.processAudio(10)
         peaks=C_1.Samples_to_Peaks(digSamples)
         fingerprints=peaks_to_fp(peaks)
@@ -56,15 +67,6 @@ def main():
                 randomLoadedSongDict = pickle.load(file)
             matchedSongInfo=randomLoadedSongDict[matchedSongInfo[0]]
             print(matchedSongInfo)
-        answer="None"
-        while answer.lower() not in ["yes","no"]:
-            answer=input("Type yes if you want to enter another recording or no if you're done")
-            answer=answer.lower()
-            if answer =="yes":
-                userWantsContinue=True
-            elif answer=="no":
-                userWantsContinue=False
-            else:
-                answer="None"
+
 if __name__ == '__main__':
     main()
