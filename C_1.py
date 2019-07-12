@@ -28,7 +28,7 @@ def Samples_to_Peaks(samples):
 
     np.clip(Spectrogram, a_min=1E-20, a_max=None, out=Spectrogram)
 
-    peaks = f.local_peaks(np.log(Spectrogram),np.log(Spectrogram.ravel()[int (.77*len(samples))]),  20)
+    peaks = f.local_peaks(np.log(Spectrogram),np.log(Spectrogram.ravel()[int (.85*Spectrogram.size)]),  20)
 
 
     return (peaks)
