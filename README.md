@@ -1,7 +1,8 @@
 # songrec
 
 
-
+This was our first capstone project at BWSI
+This involved taking a fourier analysis of a song to compare it to a song in our database
 
 
 
